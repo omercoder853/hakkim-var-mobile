@@ -1,6 +1,8 @@
 import { SymbolView } from 'expo-symbols';
+import { router } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import NewCaseButton from './components/newCaseButton';
 
 import { Colors } from '@/constants/theme';
 
@@ -20,6 +22,7 @@ export default function HomeLayout() {
         </View>
         <Text style={styles.title}>Ana sayfa</Text>
         <Text style={styles.subtitle}>Tüketici haklarınız için ihtiyacınız olan her şey burada.</Text>
+        <NewCaseButton onPress={() => router.push('/case-operations')} />
       </View>
     </SafeAreaView>
   );

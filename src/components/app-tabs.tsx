@@ -5,10 +5,14 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Colors } from '@/constants/theme';
 
-type TabName = 'home' | 'modules' | 'applications' | 'profile';
+type TabName = 'home' | 'barcode' | 'applications' | 'profile';
 type TabItem = {
   name: TabName;
-  href: '/' | '/modules' | '/applications' | '/profile';
+  href:
+    | '/(tabs)'
+    | '/(tabs)/barcode'
+    | '/(tabs)/applications'
+    | '/(tabs)/profile';
   label: string;
   icon: SymbolViewProps['name'];
 };
@@ -16,25 +20,29 @@ type TabItem = {
 const tabItems: TabItem[] = [
   {
     name: 'home',
-    href: '/',
-    label: 'Ana sayfa',
+    href: '/(tabs)',
+    label: 'Ana Sayfa',
     icon: { ios: 'house.fill', android: 'home', web: 'home' },
   },
   {
-    name: 'modules',
-    href: '/modules',
-    label: 'Modüller',
-    icon: { ios: 'square.grid.2x2.fill', android: 'grid_view', web: 'grid_view' },
+    name: 'barcode',
+    href: '/(tabs)/barcode',
+    label: 'Barkod',
+    icon: {
+      ios: 'barcode',
+      android: 'barcode',
+      web: 'barcode',
+    },
   },
   {
     name: 'applications',
-    href: '/applications',
-    label: 'Başvurular',
-    icon: { ios: 'doc.text.fill', android: 'description', web: 'description' },
+    href: '/(tabs)/applications',
+    label: 'Vakalarım',
+    icon: { ios: 'folder', android: 'folder_open', web: 'folder_open' },
   },
   {
     name: 'profile',
-    href: '/profile',
+    href: '/(tabs)/profile',
     label: 'Profil',
     icon: { ios: 'person.crop.circle.fill', android: 'person', web: 'person' },
   },

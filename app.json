@@ -26,6 +26,15 @@
     "plugins": [
       "expo-router",
       [
+        "expo-camera",
+        {
+          "cameraPermission": "Ürün barkodlarını taramak için kameraya erişim izni verin.",
+          "microphonePermission": false,
+          "recordAudioAndroid": false,
+          "barcodeScannerEnabled": true
+        }
+      ],
+      [
         "expo-splash-screen",
         {
           "backgroundColor": "#FFFCF7",
