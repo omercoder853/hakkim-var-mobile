@@ -1,5 +1,5 @@
 import { SymbolView, type SymbolViewProps } from 'expo-symbols';
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { Colors } from '@/constants/theme';
 
@@ -9,11 +9,28 @@ type ModuleCardProps = {
   icon: SymbolViewProps['name'];
   accent: string;
   tint: string;
+  onPress?: () => void;
 };
 
-export function ModuleCard({ title, description, icon, accent, tint }: ModuleCardProps) {
+export function ModuleCard({
+  title,
+  description,
+  icon,
+  accent,
+  tint,
+  onPress,
+}: ModuleCardProps) {
   return (
-    <View style={[styles.card, { backgroundColor: tint, borderColor: `${accent}26` }]}>
+    <Pressable
+      accessibilityRole="button"
+      accessibilityState={{ disabled: !onPress }}
+      disabled={!onPress}
+      onPress={onPress}
+      style={({ pressed }) => [
+        styles.card,
+        { backgroundColor: tint, borderColor: `${accent}26` },
+        pressed && styles.pressed,
+      ]}>
       <View style={[styles.iconBox, { backgroundColor: `${accent}1A` }]}>
         <SymbolView name={icon} size={23} tintColor={accent} />
       </View>
@@ -21,7 +38,7 @@ export function ModuleCard({ title, description, icon, accent, tint }: ModuleCar
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.description}>{description}</Text>
       </View>
-    </View>
+    </Pressable>
   );
 }
 
@@ -38,6 +55,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.045,
     shadowRadius: 8,
     elevation: 1,
+  },
+  pressed: {
+    opacity: 0.75,
   },
   iconBox: {
     width: 46,

@@ -13,7 +13,7 @@ export default function HomeLayout() {
             <SymbolView
               name={{ ios: 'checkmark.seal.fill', android: 'verified_user', web: 'verified_user' }}
               size={24}
-              tintColor={Colors.tabBackground}
+              tintColor={Colors.background}
             />
           </View>
           <Text style={styles.brandName}>Hakkım Var</Text>
